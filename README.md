@@ -1,2 +1,2 @@
 # dudao
-cuit
+cuit督导听课系统
