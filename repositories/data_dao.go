@@ -10,6 +10,7 @@ import (
 	"DuDao/pkg/helper"
 	v1 "DuDao/requests/v1"
 	"errors"
+	"fmt"
 	"log"
 	"reflect"
 	"strings"
@@ -47,7 +48,7 @@ func LoadRecord(load v1.QueryLoad, name string, authority string) ([]Res.LoadDat
 	}
 
 	if load.LessionName != "" {
-		db.Where("lessionName = ?", load.LessionName)
+		db.Where("courseName = ?", load.LessionName)
 	}
 
 	if load.ListenDate != "" {
@@ -127,7 +128,10 @@ func GetDetails(dataID string, authority string, userName string) (*Res.ShowDeta
 
 		addBy := GetAddbyByDataID(dataID)
 		serchUser := GetUserByAddby(addBy)
-
+		fmt.Println(dataID)
+		fmt.Println(addBy)
+		fmt.Println(serchUser.Name)
+		fmt.Println(userName)
 		if serchUser.Name != userName {
 			log.Println("权限不足")
 			return nil, err

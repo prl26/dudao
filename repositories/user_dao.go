@@ -40,14 +40,14 @@ func UpdateUser(userDto dto.UserDto) error {
 
 func GetUserByAddby(addby string) models.User {
 	user := models.User{}
-	models.DB.Find(&user, models.DB.Where("id = ?", addby))
+	models.DB.Table("tuser").Where("id = ?", addby).Find(&user)
 	return user
 }
 
 func GetAddbyByDataID(dataID string)  string {
-	var addby Addby
+	var addby models.TData
 	models.DB.Table("tdata").Find(&addby, models.DB.Where("id = ?",dataID))
-	return addby.Addby
+	return addby.AddBy
 }
 
 

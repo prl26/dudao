@@ -219,7 +219,6 @@ func UpdateHandle(c *gin.Context)  {
 		c.String(401,err.Error())
 		return
 	}
-
 	request := Res.UpData{}
 	err = c.ShouldBind(&request)
 

@@ -22,7 +22,7 @@ func GetChildren(c *gin.Context)  {
 	}
 
 	request := v1.ParentID{}
-	err = c.ShouldBind(&request)
+	err = c.ShouldBindJSON(&request)
 	if err != nil {
 		c.Status(401)
 		c.Writer.Write([]byte("请求参数出错"))

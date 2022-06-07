@@ -17,7 +17,7 @@ import (
 func LoginHandle(c *gin.Context) {
 	request := v1.LoginRequest{}
 
-	err := c.ShouldBind(&request)
+	err := c.ShouldBindJSON(&request)
 	if err != nil {
 		c.JSON(401, &Res.LoginResult{
 			ReturnUrl: "null",
